@@ -1,3 +1,3 @@
 # first-project-node
 
-# docker command: docker run --name gostack_gobarber -e POSTGRES_PASSWORD= docker -d postgres
+# docker run --name gostack_gobarber -e POSTGRES_PASSWORD=docker -p 5432:5432 -d postgres
