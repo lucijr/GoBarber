@@ -5,6 +5,7 @@ import fs from 'fs';
 
 import uploadConfig from '../config/upload';
 import User from '../models/User';
+import AppError from '../error/AppError';
 
 interface Request {
   user_id: string;
@@ -18,7 +19,7 @@ class UptadeUserAvatarService {
     const user = await usersRepository.findOne(user_id);
 
     if (!user) {
-      throw new Error('Only authenticated users can charge avatar.');
+      throw new AppError('Only authenticated users can charge avatar.', 401);
     }
 
     if (user.avatar) {
