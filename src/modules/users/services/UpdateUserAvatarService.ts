@@ -1,22 +1,22 @@
 /* eslint-disable camelcase */
-import { getRepository } from 'typeorm';
 import path from 'path';
 import fs from 'fs';
 
 import uploadConfig from '@config/upload';
-import User from '@modules/users/infra/typeorm/entities/User';
 import AppError from '@shared/error/AppError';
+import IUsersRespository from '../repositories/IUsersRepository';
+import IUser from '../entities/IUser';
 
-interface Request {
+interface IRequest {
   user_id: string;
   avatarFilename: string;
 }
 
 class UptadeUserAvatarService {
-  public async execute({ user_id, avatarFilename }: Request): Promise<User> {
-    const usersRepository = getRepository(User);
+  constructor(private usersRepository: IUsersRespository) {}
 
-    const user = await usersRepository.findOne(user_id);
+  public async execute({ user_id, avatarFilename }: IRequest): Promise<IUser> {
+    const user = await this.usersRepository.findById(user_id);
 
     if (!user) {
       throw new AppError('Only authenticated users can charge avatar.', 401);
@@ -32,7 +32,7 @@ class UptadeUserAvatarService {
 
     user.avatar = avatarFilename;
 
-    await usersRepository.save(user);
+    await this.usersRepository.save(user);
 
     return user;
   }

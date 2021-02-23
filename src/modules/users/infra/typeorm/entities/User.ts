@@ -1,3 +1,4 @@
+import IUser from '@modules/users/entities/IUser';
 import {
   Entity,
   Column,
@@ -7,7 +8,7 @@ import {
 } from 'typeorm';
 
 @Entity('users')
-class User {
+class User implements IUser {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
