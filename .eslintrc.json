@@ -22,14 +22,9 @@
       "camelcase" : "off" ,
       "no-undescore-dangle": "off",
       "prettier/prettier":"error",
+      "no-useless-constructor":"off",
       "class-methods-use-this": "off",
       "@typescript-eslint/camelcase": ["off"],
-      "@typescript-eslint/naming-convention":["off",
-       {
-         "selector":"default",
-          "format" : null
-       }
-     ],
      "@typescript-eslint/naming-convention": [
       "error",
       {
