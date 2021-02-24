@@ -22,15 +22,17 @@
       "camelcase" : "off" ,
       "no-undescore-dangle": "off",
       "prettier/prettier":"error",
+      "no-useless-constructor":"off",
       "class-methods-use-this": "off",
       "@typescript-eslint/camelcase": ["off"],
-      "@typescript-eslint/naming-convention":["off",
-       {
-         "selector":"default",
-          "format" : null
-       }
-     ],
-      "@typescript-eslint/no-unused-vars": ["error",{
+     "@typescript-eslint/naming-convention": [
+      "error",
+      {
+        "selector": "interface",
+        "prefix": ["I"],
+        "format": ["PascalCase"]
+      }
+    ], "@typescript-eslint/no-unused-vars": ["error",{
         "argsIgnorePattern":"_"
       }],
       "import/extensions":[
