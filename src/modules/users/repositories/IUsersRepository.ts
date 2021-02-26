@@ -1,9 +1,9 @@
 import ICreateUserDTO from '../dtos/ICreateUserDTO';
-import User from '../infra/typeorm/entities/User';
+import IUser from '../entities/IUser';
 
 export default interface IUsersRespository {
-  create(data: ICreateUserDTO): Promise<User>;
-  save(data: User): Promise<User>;
-  findByEmail(email: string): Promise<User | undefined>;
-  findById(id: string): Promise<User | undefined>;
+  create(data: ICreateUserDTO): Promise<IUser>;
+  save(data: IUser): Promise<IUser>;
+  findByEmail(email: string): Promise<IUser | undefined>;
+  findById(id: string): Promise<IUser | undefined>;
 }
